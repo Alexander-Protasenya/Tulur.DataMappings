@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Tulur.DataMapping.Benchmark
+namespace Tulur.DataMappings.Benchmark
 {
 	public class FsMapper : IMapper
 	{

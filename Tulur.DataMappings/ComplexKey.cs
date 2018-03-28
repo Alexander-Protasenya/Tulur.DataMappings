@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tulur.DataMapping
+namespace Tulur.DataMappings
 {
 	internal sealed class ComplexKey : IEquatable<ComplexKey>
 	{

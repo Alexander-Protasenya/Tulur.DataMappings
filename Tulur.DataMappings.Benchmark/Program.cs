@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Tulur.DataMapping.Benchmark
+namespace Tulur.DataMappings.Benchmark
 {
 	public class Program
 	{
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("FsMapper vs. Tulur.DataMapper");
-			Console.WriteLine(new string('-', 32));
+			Console.WriteLine(new string('-', 29));
 			Console.WriteLine();
 
 			#region Register mapping rules for DataMapper

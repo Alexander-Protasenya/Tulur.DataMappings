@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMapping", "Tulur.DataMapping\Tulur.DataMapping.csproj", "{CB2B55A6-3028-49BC-98DA-0C8EF6917208}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMappings", "Tulur.DataMappings\Tulur.DataMappings.csproj", "{CB2B55A6-3028-49BC-98DA-0C8EF6917208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMapping.Example", "Tulur.DataMapping.Example\Tulur.DataMapping.Example.csproj", "{94DCC094-BED1-4D19-B25D-5A25093640D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMappings.Example", "Tulur.DataMappings.Example\Tulur.DataMappings.Example.csproj", "{94DCC094-BED1-4D19-B25D-5A25093640D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMapping.Benchmark", "Tulur.DataMapping.Benchmark\Tulur.DataMapping.Benchmark.csproj", "{AD4C4192-9649-4763-B0BD-C3599DDBC883}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulur.DataMappings.Benchmark", "Tulur.DataMappings.Benchmark\Tulur.DataMappings.Benchmark.csproj", "{AD4C4192-9649-4763-B0BD-C3599DDBC883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

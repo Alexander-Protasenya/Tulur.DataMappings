@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{94DCC094-BED1-4D19-B25D-5A25093640D0}</ProjectGuid>
+    <ProjectGuid>{AD4C4192-9649-4763-B0BD-C3599DDBC883}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tulur.DataMapping.Example</RootNamespace>
-    <AssemblyName>Tulur.DataMapping.Example</AssemblyName>
+    <RootNamespace>Tulur.DataMappings.Benchmark</RootNamespace>
+    <AssemblyName>Tulur.DataMappings.Benchmark</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,25 +32,22 @@
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MappingRules.cs" />
+    <Compile Include="FsMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs" />
-    <Compile Include="TypeA.cs" />
-    <Compile Include="TypeB.cs" />
+    <Compile Include="TestClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tulur.DataMapping\Tulur.DataMapping.csproj">
+    <ProjectReference Include="..\Tulur.DataMappings\Tulur.DataMappings.csproj">
       <Project>{cb2b55a6-3028-49bc-98da-0c8ef6917208}</Project>
       <Name>Tulur.DataMapping</Name>
     </ProjectReference>

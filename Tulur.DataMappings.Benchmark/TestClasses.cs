@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tulur.DataMapping.Benchmark
+namespace Tulur.DataMappings.Benchmark
 {
 	public class TypeA
 	{

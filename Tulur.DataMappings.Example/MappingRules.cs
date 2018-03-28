@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tulur.DataMapping.Example
+namespace Tulur.DataMappings.Example
 {
 	public static class MappingRules
 	{
