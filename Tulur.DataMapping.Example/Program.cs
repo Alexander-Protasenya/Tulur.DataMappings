@@ -18,7 +18,7 @@ namespace Tulur.DataMapping.Example
 			DataMapper mapper = new DataMapper();
 
 			// Default mapping
-			//mapper.Register<TypeA, TypeB>();
+			mapper.Register<TypeA, TypeB>();
 
 			// If it is necessary to add specific mapping rules
 			//mapper.Register<TypeA, TypeB>((from, to) =>
