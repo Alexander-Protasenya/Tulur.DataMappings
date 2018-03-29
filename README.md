@@ -46,12 +46,12 @@ Last variant is more preferable if you use a lot of mapping rules. In this case 
 
 Custom mapping rule is ordinary method with signature `void MethodName(TypeA source, TypeB dest)`. This method will run after normal mapping.
 
-## Performance
+### Performance
 If you run benchmark (project "Tulur.DataMappings.Benchmark"), you can compare performance of Tulur.DataMapper and FsMapper. Conditions: 20 registered mapping functions, 4 * 10 millions calls of mapping functions.
 
 Conclusions: if you use DEBUG mode Tulur.DataMapper faster 15% approx, but if you use RELEASE mode, superiority is almost imperceptible. Most cases what mapper started secondary - that mapper will win (reason: "first code" always works slower, special behavior of CLR). If I understand correctly this results, CLR optimize code of FsMapeer dynamically something like was optimized Tulur.DataMapper. In general, I satisfied about this performance comparison, because my fork of FsMapper works not slower original (maybe little faster), but my fork has several new features. My code optimization complete cover loading of new features.
 
-## Remarks
+### Remarks
 1. Solution was created in VS2015 / .NET v4.6.1. Original version of FsMapper was created only for .NET Core. So, for benchmark used version of source code FsMapper adapted for .NET v4.6.1.
 2. I purposefully declined idea with Lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple conversions, but in "Real world application" it is big problem, I think. Because it is more difficult to debug/diagnostics, more difficult to use multi-steps code. For example, try to write `MappingRules.CreateMap()` method from Example project in lambda-style :-)
 I really like lambda-style, but not for tasks like this.
