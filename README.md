@@ -53,7 +53,7 @@ Conclusions: if you use DEBUG mode Tulur.DataMapper faster 15% approx, but if yo
 
 ## Remarks
 1. Solution was created in VS2015 / .NET v4.6.1. Original version of FsMapper was created only for .NET Core. So, for benchmark used version of source code FsMapper adapted for .NET v4.6.1.
-2. I purposefully declined idea with Lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple conversions, but in "Real world application" it is big problem, I think. Because it is more difficult to debug/diagnostics, more difficult to use multi-line/multi-steps code. For example, try to write MappingRules. CreateMap method from Example project in lambda-style :-)
+2. I purposefully declined idea with Lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple conversions, but in "Real world application" it is big problem, I think. Because it is more difficult to debug/diagnostics, more difficult to use multi-steps code. For example, try to write `MappingRules.CreateMap()` method from Example project in lambda-style :-)
 I really like lambda-style, but not for tasks like this.
 
 
