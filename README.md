@@ -5,10 +5,6 @@ This project is fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMapper 
 
 I decided to improve this project, but in this case I had to do complete refactoring FsMapper, as a result I decided to create my fork of FsMapper.
 
-Tulur.DataMappings is available on NuGet:
-
-`PM> Install-Package Tulur.DataMappings`
-
 ### New futures 
 1.	Main feature: you can create custom rules for your mappings. Because by default, system convert only properties with equal names / types. But in "Real world application" it is necessary to have possibility to use custom rules for your mappings. 
 2.	Checking existence default constructor for result type was moved from "Run-time" to "Compile-time". So, if your result type does not have default constructor, application will not compile.
@@ -17,6 +13,10 @@ Tulur.DataMappings is available on NuGet:
 5.	A lot of minor performance improvements / fixes.
 
 ### Usage
+
+Tulur.DataMappings is available on NuGet:
+
+`PM> Install-Package Tulur.DataMappings`
 
 Simple example:
 
