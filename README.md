@@ -13,7 +13,12 @@ I decided to improve this project, but in this case I had to do complete refacto
 5.	A lot of minor performance improvements / fixes.
 
 ### Usage
-Here is a simple example of using:
+
+Tulur.DataMappings is available on NuGet:
+
+`PM> Install-Package Tulur.DataMappings`
+
+Example:
 
 ```C#
 // Initialization of DataMapper
