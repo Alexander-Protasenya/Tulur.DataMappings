@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Tulur.DataMappings.Benchmark
 {
@@ -77,31 +78,49 @@ namespace Tulur.DataMappings.Benchmark
 			Stopwatch sw;
 			TypeA typeA = new TypeA {Title = Guid.NewGuid().ToString(), Description = Guid.NewGuid().ToString()};
 
-			Console.Write(nameof(DataMapper) + ": ");
-			sw = new Stopwatch();
-			sw.Start();
-			for (int i = 0; i < LIMIT; i++)
+			long dataMapperCounter = 0;
+			long fsMapperCounter = 0;
+			for (int n = 0; n < 5; n++)
 			{
-				TypeB typeB = dataMapper.Map<TypeA, TypeB>(typeA);
-				TypeC typeC = dataMapper.Map<TypeB, TypeC>(typeB);
-				TypeD typeD = dataMapper.Map<TypeC, TypeD>(typeC);
-				Object obj = dataMapper.Map<TypeD, Object>(typeD);
-			}
-			sw.Stop();
-			Console.WriteLine(sw.ElapsedMilliseconds + " ms.");
+				Console.Write(nameof(DataMapper) + ": ");
+				sw = new Stopwatch();
+				sw.Start();
+				for (int i = 0; i < LIMIT; i++)
+				{
+					TypeB typeB = dataMapper.Map<TypeA, TypeB>(typeA);
+					TypeC typeC = dataMapper.Map<TypeB, TypeC>(typeB);
+					TypeD typeD = dataMapper.Map<TypeC, TypeD>(typeC);
+					Object obj = dataMapper.Map<TypeD, Object>(typeD);
+				}
+				sw.Stop();
+				dataMapperCounter += sw.ElapsedMilliseconds;
+				Console.WriteLine(sw.ElapsedMilliseconds + " ms.");
 
-			Console.Write("  " + nameof(FsMapper) + ": ");
-			sw = new Stopwatch();
-			sw.Start();
-			for (int i = 0; i < LIMIT; i++)
-			{
-				TypeB typeB = fsMapper.Map<TypeA, TypeB>(typeA);
-				TypeC typeC = fsMapper.Map<TypeB, TypeC>(typeB);
-				TypeD typeD = fsMapper.Map<TypeC, TypeD>(typeC);
-				Object obj = fsMapper.Map<TypeD, Object>(typeD);
+				Console.Write("  " + nameof(FsMapper) + ": ");
+				sw = new Stopwatch();
+				sw.Start();
+				for (int i = 0; i < LIMIT; i++)
+				{
+					TypeB typeB = fsMapper.Map<TypeA, TypeB>(typeA);
+					TypeC typeC = fsMapper.Map<TypeB, TypeC>(typeB);
+					TypeD typeD = fsMapper.Map<TypeC, TypeD>(typeC);
+					Object obj = fsMapper.Map<TypeD, Object>(typeD);
+				}
+				sw.Stop();
+				fsMapperCounter += sw.ElapsedMilliseconds;
+				Console.WriteLine(sw.ElapsedMilliseconds + " ms.");
 			}
-			sw.Stop();
-			Console.WriteLine(sw.ElapsedMilliseconds + " ms.");
+
+			Console.WriteLine();
+			if (dataMapperCounter < fsMapperCounter)
+			{
+				Console.WriteLine("{0} win! {1} ms.", nameof(DataMapper), fsMapperCounter - dataMapperCounter);
+			}
+			else
+			{
+				Console.WriteLine("{0} win! {1} ms.", nameof(FsMapper), dataMapperCounter - fsMapperCounter);
+			}
+			Console.WriteLine();
 
 			Console.WriteLine();
 			Console.WriteLine("Press ENTER...");
