@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>Tulur.DataMappings</id>
+		<version>1.0.2</version>
+		<title>Tulur.DataMappings</title>
+		<authors>Alexander Protasenya</authors>
+		<owners>Alexander Protasenya</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<projectUrl>https://github.com/Alexander-Protasenya/Tulur.DataMappings</projectUrl>
+		<description>Lightweight high-performanced data mapper, based on .NET expressions</description>
+		<summary>Lightweight high-performanced data mapper, based on .NET expressions</summary>
+		<copyright>Copyright 2018, Alexander Protasenya</copyright>
+		<tags>mapping mapper data-mapper high-performance lightweight</tags>
+		<dependencies />
+	</metadata>
+</package>

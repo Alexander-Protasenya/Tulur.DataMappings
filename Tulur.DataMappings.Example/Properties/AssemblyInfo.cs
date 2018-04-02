@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Tulur.DataMappings.Example")]
-[assembly: AssemblyCopyright("Copyright © 2018")]
+[assembly: AssemblyCopyright("Copyright © 2018, Alexander Protasenya")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

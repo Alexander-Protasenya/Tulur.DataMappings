@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 
 namespace Tulur.DataMappings.Benchmark
 {
@@ -80,7 +79,7 @@ namespace Tulur.DataMappings.Benchmark
 
 			long dataMapperCounter = 0;
 			long fsMapperCounter = 0;
-			for (int n = 0; n < 5; n++)
+			for (int n = 0; n < 7; n++)
 			{
 				Console.Write(nameof(DataMapper) + ": ");
 				sw = new Stopwatch();
@@ -90,7 +89,7 @@ namespace Tulur.DataMappings.Benchmark
 					TypeB typeB = dataMapper.Map<TypeA, TypeB>(typeA);
 					TypeC typeC = dataMapper.Map<TypeB, TypeC>(typeB);
 					TypeD typeD = dataMapper.Map<TypeC, TypeD>(typeC);
-					Object obj = dataMapper.Map<TypeD, Object>(typeD);
+					object obj = dataMapper.Map<TypeD, object>(typeD);
 				}
 				sw.Stop();
 				dataMapperCounter += sw.ElapsedMilliseconds;
@@ -104,7 +103,7 @@ namespace Tulur.DataMappings.Benchmark
 					TypeB typeB = fsMapper.Map<TypeA, TypeB>(typeA);
 					TypeC typeC = fsMapper.Map<TypeB, TypeC>(typeB);
 					TypeD typeD = fsMapper.Map<TypeC, TypeD>(typeC);
-					Object obj = fsMapper.Map<TypeD, Object>(typeD);
+					object obj = fsMapper.Map<TypeD, object>(typeD);
 				}
 				sw.Stop();
 				fsMapperCounter += sw.ElapsedMilliseconds;

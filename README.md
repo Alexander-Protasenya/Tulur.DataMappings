@@ -14,7 +14,7 @@ I decided to improve this project, but in this case I had to do complete refacto
 
 ### Usage
 
-Tulur.DataMappings is available on NuGet:
+This library is available on NuGet:
 
 `PM> Install-Package Tulur.DataMappings`
 
