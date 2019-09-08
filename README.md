@@ -49,7 +49,7 @@ The last variant is more preferable if you use a lot of mapping rules. In this c
 Custom mapping rule is an ordinary method with signature `void MethodName(TypeA source, TypeB dest)`.
 
 ### Performance
-I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance! I happy about it because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
+I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance without any loss! I'm happy about it, because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
 
 Original benchmark project from FsMapper is used. But version of .NET Core was updated to stable latest version; All NuGet dependencies were updated to latest. An updated benchmark is exist in this source code.
 
