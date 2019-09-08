@@ -71,7 +71,7 @@ Original benchmark project from FsMapper is used. But version of .NET Core was u
 | ValueInjecterBenchmark | 1,600.073 ns | 3.0689 ns | 2.8706 ns |
 
 ### Remarks
-I purposefully declined the idea with lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug/diagnostics, and using it in complex code. If you don't believe me, you can try to write `MappingRules.CreateMap()` method from test project in lambda-style.
+I purposefully declined the idea with lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug/diagnostics, and using it in complex code. If you don't believe me, you can try to write `CreateMap()` method from test project in lambda-style :-)
 I really like lambda-style, but not for tasks like this.
 
 
