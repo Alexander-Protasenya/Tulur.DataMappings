@@ -1,7 +1,7 @@
 ## Tulur.DataMappings
 Lightweight, high-performanced data mapper, based on .NET expressions. This project will be helpful if you need to convert objects of different types a lot of times. For example, conversion of data-transfer-object to business-object, and vice-versa.
 
-This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMapper is a good implementation of a perfect idea - the system generates special functions of conversions. These functions compile dynamically and save in memory. The system uses these functions if it is necessary. In this case mapping process works without using Reflection. As a result, conversion works very fast.
+This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMapper is a good implementation of a perfect idea - the system generates special functions of conversions. These functions compile dynamically only once and save in memory. The system uses these functions when it is necessary. In this case mapping process works without using Reflection. As a result, mapping works very fast.
 
 ### New futures 
 1.	Main feature: you can create custom rules for your mappings. Because by default, the system converts only properties with equal names / types. But in "Real world applications" it is necessary to have a possibility to use custom rules for your mappings. 
