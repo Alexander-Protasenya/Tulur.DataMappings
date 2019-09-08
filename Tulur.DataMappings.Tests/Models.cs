@@ -1,54 +1,43 @@
 ﻿using System;
 
-namespace Tulur.DataMappings.Benchmark
+namespace Tulur.DataMappings.Tests
 {
 	public class TypeA
 	{
 		public string Title { get; set; }
-
 		public string Description { get; set; }
-
 		public string[] Tags { get; set; }
-
 		public DateTime Created { get; set; }
-
 		public DateTime Timestamp { get; set; }
-
 		public bool IsNew { get; set; }
-
 		public bool IsArchive { get; set; }
 	}
 
-	public class TypeB
+	public class TypeB // Complete copy of TypeA
 	{
-		public string Name { get; set; }
-
+		public string Title { get; set; }
 		public string Description { get; set; }
-
 		public string[] Tags { get; set; }
-
+		public DateTime Created { get; set; }
 		public DateTime Timestamp { get; set; }
+		public bool IsNew { get; set; }
+		public bool IsArchive { get; set; }
 	}
 
 	public class TypeC
 	{
-		public int Id { get; set; }
-
-		public string Title { get; set; }
-
-		public DateTime CreatedAtUtc { get; set; }
-
-		public bool IsDeleted { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public string[] Tags { get; set; }
+		public DateTime Timestamp { get; set; }
+		public Status Status { get; set; }
 	}
 
-	public class TypeD
+	public enum Status
 	{
-		public int Id { get; set; }
-
-		public string Title { get; set; }
-
-		public DateTime CreatedAtUtc { get; set; }
-
-		public bool IsDeleted { get; set; }
+		IsNew,
+		NotValid,
+		Ready,
+		Old
 	}
 }

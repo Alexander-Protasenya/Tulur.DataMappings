@@ -2,7 +2,7 @@
 
 namespace Tulur.DataMappings
 {
-	internal sealed class ComplexKey : IEquatable<ComplexKey>
+	internal readonly struct ComplexKey : IEquatable<ComplexKey>
 	{
 		public ComplexKey(Type first, Type second)
 		{
@@ -17,13 +17,11 @@ namespace Tulur.DataMappings
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				return ((_first?.GetHashCode() ?? 0) << 16) ^ ((_second?.GetHashCode() ?? 0) & 65535);
-			}
+			return (_first.GetHashCode() << 16) ^ (_second.GetHashCode() & 65535);
 		}
 
 		private readonly Type _first;
+
 		private readonly Type _second;
 	}
 }

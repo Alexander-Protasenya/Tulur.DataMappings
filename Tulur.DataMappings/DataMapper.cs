@@ -13,6 +13,8 @@ namespace Tulur.DataMappings
 			_convertFunctions = new Dictionary<ComplexKey, Delegate>(capacity);
 		}
 
+		private readonly Dictionary<ComplexKey, Delegate> _convertFunctions;
+
 		public void Register<TSource, TResult>(Action<TSource, TResult> postAction = null) where TResult : new()
 		{
 			Type typeSource = typeof(TSource);
@@ -20,16 +22,15 @@ namespace Tulur.DataMappings
 			ComplexKey key = new ComplexKey(typeSource, typeResult);
 
 			Func<TSource, TResult> convertFunction = CreateConvertFunction<TSource, TResult>();
+
 			if (postAction != null)
 			{
-				Func<TSource, TResult> specialConvertFunction = delegate(TSource source)
+				_convertFunctions[key] = (Func<TSource, TResult>) (source =>
 				{
 					TResult result = convertFunction(source);
 					postAction(source, result);
 					return result;
-				};
-
-				_convertFunctions[key] = specialConvertFunction;
+				});
 			}
 			else
 			{
@@ -46,14 +47,12 @@ namespace Tulur.DataMappings
 			Delegate convertFunction;
 			if (!_convertFunctions.TryGetValue(key, out convertFunction))
 			{
-				const string ERROR = "Pair of types {0}, {1} not registered. You should register this pair of types using method {2}().";
-				throw new Exception(string.Format(ERROR, typeSource.FullName, typeResult.FullName, nameof(Register)));
+				string text = $"Pair of types '{typeSource.FullName}', '{typeResult.FullName}' not registered. You should register this pair of types by method {nameof(Register)}().";
+				throw new Exception(text);
 			}
 
 			return ((Func<TSource, TResult>) convertFunction)(source);
 		}
-
-		private readonly Dictionary<ComplexKey, Delegate> _convertFunctions;
 
 		private static Func<TSource, TResult> CreateConvertFunction<TSource, TResult>()
 		{
@@ -61,13 +60,14 @@ namespace Tulur.DataMappings
 			Type typeResult = typeof(TResult);
 
 			const BindingFlags BINDING_FLAGS = BindingFlags.Instance | BindingFlags.Public;
+
 			PropertyInfo[] getProps = typeSource.GetProperties(BINDING_FLAGS);
 			PropertyInfo[] setProps = typeResult.GetProperties(BINDING_FLAGS);
 
 			ParameterExpression instance = Expression.Parameter(typeSource, null);
 
 			IEnumerable<MemberAssignment> props = getProps
-				.Join(setProps, g => g.Name, s => s.Name, (g, s) => new {PropertyGet = g, PropertySet = s})
+				.Join(setProps, x => x.Name, x => x.Name, (x, y) => new {PropertyGet = x, PropertySet = y})
 				.Select(x => Expression.Bind(x.PropertySet, Expression.Property(instance, x.PropertyGet)));
 
 			MemberInitExpression body = Expression.MemberInit(Expression.New(typeResult), props);
