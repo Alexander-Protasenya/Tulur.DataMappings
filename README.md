@@ -51,23 +51,20 @@ Custom mapping rule is an ordinary method with signature `void MethodName(TypeA 
 ### Performance
 I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance! I happy about it because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
 
-Original benchmark project from FsMapper is used. But version of .NET Core was updated to stable latest version; All NuGet dependencies were updated to latest. Updated benchmark is exist in this source code.
+Original benchmark project from FsMapper is used. But version of .NET Core was updated to stable latest version; All NuGet dependencies were updated to latest. An updated benchmark is exist in this source code.
 
 ``` ini
 
-BenchmarkDotNet=v0.11.5, OS=Windows 10.0.18362
-Intel Core i5-8500 CPU 3.00GHz (Coffee Lake), 1 CPU, 6 logical and 6 physical cores
 .NET Core SDK=2.2.108
   [Host]     : .NET Core 2.2.6 (CoreCLR 4.6.27817.03, CoreFX 4.6.27818.02), 64bit RyuJIT
   DefaultJob : .NET Core 2.2.6 (CoreCLR 4.6.27817.03, CoreFX 4.6.27818.02), 64bit RyuJIT
-
 
 ```
 |                 Method |         Mean |     Error |    StdDev |
 |----------------------- |-------------:|----------:|----------:|
 |          CtorBenchmark |     4.133 ns | 0.0401 ns | 0.0356 ns |
 |      FsMapperBenchmark |    43.375 ns | 0.1930 ns | 0.1805 ns |
-|    DataMapperBenchmark |    37.639 ns | 0.0782 ns | 0.0731 ns |
+|    **DataMapperBenchmark** |    **37.639 ns** | **0.0782 ns** | **0.0731 ns** |
 |    AutoMapperBenchmark |   113.011 ns | 0.5304 ns | 0.4429 ns |
 | ExpressMapperBenchmark |   139.935 ns | 2.8134 ns | 2.6316 ns |
 |       MapsterBenchmark |    54.562 ns | 0.1719 ns | 0.1435 ns |
