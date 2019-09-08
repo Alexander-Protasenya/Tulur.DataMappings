@@ -8,7 +8,6 @@ This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMappe
 2.	Checking existence of a default constructor for result type was moved from "Run-time" to "Compile-time". So, if result type does not have a default constructor, application will not be compiled.
 3.	Checking existence of a mapping-function before using was added.
 4.	Parameter "capacity" for mapping rules was added. It is common feature for .NET collections. It will be helpful if you exactly know number of your kinds of mappings.
-5.	I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance! I happy about this because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
 
 ### Usage
 
@@ -50,13 +49,33 @@ The last variant is more preferable if you use a lot of mapping rules. In this c
 Custom mapping rule is an ordinary method with signature `void MethodName(TypeA source, TypeB dest)`.
 
 ### Performance
-If you run benchmark (project "Tulur.DataMappings.Benchmark"), you can compare performance of Tulur.DataMapper and FsMapper. Conditions: 20 registered mapping functions, 4 * 10 millions calls of mapping functions.
+I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance! I happy about it because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
 
-Conclusions: if you use DEBUG mode Tulur.DataMapper 15% approx faster. But if you use RELEASE mode, superiority is almost imperceptible. In most cases the mapper that is started secondary - wins (reason: "first code" always works slower, it is special behavior of CLR). If I understand this results correctly, CLR optimizes code of FsMapeer dynamically something like Tulur.DataMapper was optimized. In general, I'am satisfied with this performance comparison, because my fork of FsMapper works not slower original (maybe a bit faster), but my fork has several new features. My code optimizations completely covered loading of new features.
+Original benchmark project from FsMapper is used. But version of .NET Core was updated to stable latest version; All NuGet dependencies were updated to latest. Updated benchmark is exist in this source code.
+
+``` ini
+
+BenchmarkDotNet=v0.11.5, OS=Windows 10.0.18362
+Intel Core i5-8500 CPU 3.00GHz (Coffee Lake), 1 CPU, 6 logical and 6 physical cores
+.NET Core SDK=2.2.108
+  [Host]     : .NET Core 2.2.6 (CoreCLR 4.6.27817.03, CoreFX 4.6.27818.02), 64bit RyuJIT
+  DefaultJob : .NET Core 2.2.6 (CoreCLR 4.6.27817.03, CoreFX 4.6.27818.02), 64bit RyuJIT
+
+
+```
+|                 Method |         Mean |     Error |    StdDev |
+|----------------------- |-------------:|----------:|----------:|
+|          CtorBenchmark |     4.133 ns | 0.0401 ns | 0.0356 ns |
+|      FsMapperBenchmark |    43.375 ns | 0.1930 ns | 0.1805 ns |
+|    DataMapperBenchmark |    37.639 ns | 0.0782 ns | 0.0731 ns |
+|    AutoMapperBenchmark |   113.011 ns | 0.5304 ns | 0.4429 ns |
+| ExpressMapperBenchmark |   139.935 ns | 2.8134 ns | 2.6316 ns |
+|       MapsterBenchmark |    54.562 ns | 0.1719 ns | 0.1435 ns |
+|   AgileMapperBenchmark |   169.747 ns | 0.3111 ns | 0.2758 ns |
+| ValueInjecterBenchmark | 1,600.073 ns | 3.0689 ns | 2.8706 ns |
 
 ### Remarks
-1. The solution was created in VS2015 / .NET v4.6.1. Original version of FsMapper was created for .NET Core. So, benchmark uses the version of source code FsMapper adapted for .NET v4.6.1.
-2. I purposefully declined the idea with lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple converting, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug/diagnostics, and using it in "multi-steps" code. For example, try to write `MappingRules.CreateMap()` method from example project in lambda-style :-)
+I purposefully declined the idea with lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug/diagnostics, and using it in complex code. If you don't believe, try to write `MappingRules.CreateMap()` method from test project in lambda-style :-)
 I really like lambda-style, but not for tasks like this.
 
 
