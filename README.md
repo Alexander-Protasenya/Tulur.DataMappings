@@ -6,9 +6,9 @@ This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMappe
 ### New futures 
 1.	Main feature: you can create custom rules for your mappings. Because by default, the system converts only properties with equal names / types. But in "Real world applications" it is necessary to have a possibility to use custom rules for your mappings. 
 2.	Checking existence of a default constructor for result type was moved from "Run-time" to "Compile-time". So, if result type does not have a default constructor, application will not be compiled.
-3.	Checking existence of a convert-function before using was added.
-4.	Parameter "capacity" of registrations was added. Something like this is used for .NET collections. It will helpful if you exactly know number of your kinds of mappings.
-5.	A lot of minor performance improvements / fixes.
+3.	Checking existence of a mapping-function before using was added.
+4.	Parameter "capacity" for mapping rules was added. It is common feature for .NET collections. It will be helpful if you exactly know number of your kinds of mappings.
+5.	I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance! I happy about this because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
 
 ### Usage
 
@@ -45,9 +45,9 @@ Or
 mapper.Register<TypeA, TypeB>(MappingRules.CreateMap);
 ```
 
-The last variant is more preferable if you use a lot of mapping rules. In this case you can use separate class (or several classes) for storing all mapping rules.
+The last variant is more preferable if you use a lot of mapping rules. In this case you can create separate class (or several classes) for storing all mapping rules.
 
-Custom mapping rule is an ordinary method with signature `void MethodName(TypeA source, TypeB dest)`. This method will be run after a normal mapping.
+Custom mapping rule is an ordinary method with signature `void MethodName(TypeA source, TypeB dest)`.
 
 ### Performance
 If you run benchmark (project "Tulur.DataMappings.Benchmark"), you can compare performance of Tulur.DataMapper and FsMapper. Conditions: 20 registered mapping functions, 4 * 10 millions calls of mapping functions.
