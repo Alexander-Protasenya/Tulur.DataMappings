@@ -1,13 +1,14 @@
 ## Tulur.DataMappings
-Lightweight, high-performanced data mapper, based on .NET expressions. This project will be helpful if you need to convert objects of different types a lot of times. For example, conversion of data-transfer-object to business-object, and vice-versa.
+Lightweight, high-performanced data mapper, based on .NET expressions. This project will be helpful if you need to convert objects of different types a lot of times. For example, conversion of data-transfer-object to business-object.
 
-This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMapper is a good implementation of a perfect idea - the system generates special functions of conversions. These functions compile dynamically only once and save in memory. The system uses these functions when it is necessary. In this case mapping process works without using Reflection. As a result, mapping works very fast.
+This project is a fork of [FsMapper](https://github.com/FSou1/FsMapper). FsMapper is a good implementation of a perfect idea - the system generates special conversion functions. These functions compile dynamically only once and save in memory. The system uses these functions when it is necessary. In this case mapping process works without using Reflection. As a result, mapping works very fast.
 
 ### New futures 
 1.	Main feature: you can create custom rules for your mappings. Because by default, the system converts only properties with equal names / types. But in "Real world applications" it is necessary to have a possibility to use custom rules for your mappings. 
 2.	Checking existence of a default constructor for result type was moved from "Run-time" to "Compile-time". So, if result type does not have a default constructor, application will not be compiled.
 3.	Checking existence of a mapping-function before using was added.
-4.	Parameter "capacity" for mapping rules was added. It is common feature for .NET collections. It will be helpful if you exactly know number of your kinds of mappings.
+4.	Parameter "capacity" for mapping rules was added. It is common feature for .NET collections. It will be useful if you know the exact number of your kinds of mappings.
+5.	Better performance.
 
 ### Usage
 
@@ -44,14 +45,14 @@ Or
 mapper.Register<TypeA, TypeB>(MappingRules.CreateMap);
 ```
 
-The last variant is more preferable if you use a lot of mapping rules. In this case you can create separate class (or several classes) for storing all mapping rules.
+The last variant is more preferable if you use a lot of mapping rules. In this case you can create separate class (or several classes) to store all mapping rules.
 
 Custom mapping rule is an ordinary method with signature `void MethodName(TypeA source, TypeB dest)`.
 
 ### Performance
-I had to completely refactor of FsMapper, because I had a lot of ideas to improve it. As a result I had manage to make code shorter and increase performance without any loss! I'm happy about it, because FsMapper is fastest mapper which I saw. It was fastest mapper :-)
+I had to completely refactor of FsMapper, because I had a lot of ideas for improving it. As a result I managed to make code shorter and increase performance without any loss. I'm happy about it, because FsMapper is the fastest mapper that I saw. It was the fastest mapper :-)
 
-Original benchmark project from FsMapper is used. But version of .NET Core was updated to stable latest version; All NuGet dependencies were updated to latest. An updated benchmark is exist in this source code.
+Original benchmark project from FsMapper is used. But version of .NET Core was updated to the stable latest version; All NuGet dependencies were updated to latest. An updated benchmark is exist in this source code.
 
 ``` ini
 
@@ -71,13 +72,13 @@ Original benchmark project from FsMapper is used. But version of .NET Core was u
 | ValueInjecterBenchmark | 1,600.073 ns | 3.0689 ns | 2.8706 ns |
 
 ### Remarks
-I purposefully declined the idea with lambda-style of custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug, and using it in complex code. If you don't believe me, you can try to write `CreateMap()` method from test project in lambda-style :-)
+I intentionally rejected the idea of using lambda-style syntax for custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style syntax is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug, and use it in complex code. If you don't believe me, you can try to write `CreateMap()` method from test project in lambda-style :-)
 
 I really like lambda-style, but not for tasks like this.
 
 
 ### Donation
-If my project help you, you can support my motivation to continue working on this project :-)
+If my project helps you, you can support my motivation to continue working on this project :-)
 
 Webmoney: Z410376614329 or R181376873839
 
