@@ -75,13 +75,3 @@ Original benchmark project from FsMapper is used. But version of .NET Core was u
 I intentionally rejected the idea of using lambda-style syntax for custom mapping rules ([Automapper]( https://github.com/AutoMapper/AutoMapper) style). Lambda-style syntax is beauty for simple mapping, but in "Real world applications" it is a big problem, I think. Because it is more difficult to debug, and use it in complex code. If you don't believe me, you can try to write `CreateMap()` method from test project in lambda-style :-)
 
 I really like lambda-style, but not for tasks like this.
-
-
-### Donation
-If my project helps you, you can support my motivation to continue working on this project :-)
-
-Webmoney: Z410376614329 or R181376873839
-
-Yandex.Money: 410012007533568
-
-Ethereum: 0xFcaD676Dc74ea60c2fF9fb623ff7903AC898a32d
